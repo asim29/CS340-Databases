@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
   "scripts": {
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
@@ -13,6 +17,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.6",
     "squel": "^5.12.2"
   }
 }

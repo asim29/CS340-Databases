@@ -2,7 +2,6 @@ const mysql = require('mysql');
 const squel = require('squel');
 
 const db_name = "Art_Gallery";
-var connection = 0;
 
 function sqlDB(){
 	this.DB = mysql.createConnection({
@@ -16,18 +15,10 @@ function sqlDB(){
 	console.log("Connected to SQL DB");
 };
 
-const parseObject = (att, values) =>{
-	obj = {};
-	for(let i = 0; i < att.length; i++){
-		obj[att[i]] = values[i];
-	}
-
-	return obj;
-}
-
 sqlDB.prototype.insertValue = async function(table, data){
 	sqlDB = this.DB;
-
+	console.log("In Database function");
+	console.log(table)
 	q = squel.insert()
 			.into(table)
 			.setFields(data)
@@ -35,14 +26,20 @@ sqlDB.prototype.insertValue = async function(table, data){
 
 	console.log(q);
 
-	sqlDB.query(q, (err, result) => {
-		if(err)
-			throw err;
-		else{
-			console.log("Successfuly inserted");
-			console.log(result);
-			console.log("\n");
-		}
+	return new Promise (async (resolve, reject) => {
+		sqlDB.query(q, (err, result) => {
+			if(err){
+				if(err.code == "ER_DUP_ENTRY"){
+					// console.log("DUPLICATE - NOT ENTERED")
+					resolve("DUPLICATE - NOT ENTERED")
+				} else 
+					reject(err);
+			}
+			else{
+				console.log(result);
+				resolve(result)
+			}
+		});
 	});
 }
 
@@ -54,14 +51,17 @@ sqlDB.prototype.delValue = async function(table, attr, val){
 			.where(attr + ' = ' + val)
 			.toString();
 
-	sqlDB.query(q, (err, result) => {
-		if(err)
-			throw err;
-		else{
-			console.log("Successfuly Deleted");
-			console.log(result);
-			console.log("\n");
-		}
+	console.log(q);
+	return new Promise (async (resolve, reject) => {
+		sqlDB.query(q, (err, result) => {
+			if(err){
+				reject(err);
+			}
+			else{
+				console.log(result);
+				resolve(result)
+			}
+		});
 	});
 }
 
@@ -75,14 +75,16 @@ sqlDB.prototype.updateTable = async function(tableName, data, matchAttr, matchVa
 			.where(matchAttr + " = " + 	matchVal)
 			.toString();
 
-	sqlDB.query(q, (err, result) => {
-		if(err)
-			throw err;
-		else{
-			console.log("Successfuly Updated");
-			console.log(result);
-			console.log("\n");
-		}
+	return new Promise (async (resolve, reject) => {
+		sqlDB.query(q, (err, result) => {
+			if(err){
+				reject(err);
+			}
+			else{
+				console.log(result);
+				resolve(result)
+			}
+		});
 	});
 }
 
