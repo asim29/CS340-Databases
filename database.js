@@ -64,7 +64,6 @@ sqlDB.prototype.delValue = async function(table, attr, val){
 		});
 	});
 }
-
 sqlDB.prototype.updateTable = async function(tableName, data, matchAttr, matchVal){
 	sqlDB = this.DB;
 
@@ -88,7 +87,9 @@ sqlDB.prototype.updateTable = async function(tableName, data, matchAttr, matchVa
 	});
 }
 
+
 sqlDB.prototype.getTable = async function(tableName){
+	sqlDB = this.DB
 	q = squel.select()
 			.from(tableName)
 			.toString();

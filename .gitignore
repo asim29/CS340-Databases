@@ -1,1 +1,14 @@
+#all packages
 node_modules/
+
+#submission files
+*.zip
+
+#required for submission
+Screenshots/
+
+#Write-up for assignment
+*.docx
+
+#Error logs
+*.log

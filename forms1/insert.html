@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<script type="text/javascript">
+    const Artist = 'Artist_ID,Style,Birth_Place';
+    const Auction = 'Auction_ID,Date';
+    const Customer = 'Customer_ID,Address,Total_Hours';
+    const Paintings = 'Artist_ID,Title,Price,Year,Category';
+    const Person = 'ID,Name';
+    const Requests = 'Customer_ID,Painting_Title,Date';
+    const Sells = 'Painting_ID,Vendor_ID, Date,Sell_Price';
+    const Sold_To = 'Customer_ID,Auction_ID,Painting_ID,Final_Price';
+    const Stocks = 'Auction_ID,Painting_ID,Start_Price';
+    const Vendor = 'Vendor_ID,Location';
+    const Visits = 'Customer_ID,Date,Time_IN,Hours';
+
+	const tables = {
+        'Artist': Artist.split(','),
+        'Auction': Auction.split(','),
+        'Customer': Customer.split(','),
+        'Paintings': Paintings.split(','),
+        'Person': Person.split(','),
+        'Requests': Requests.split(','),
+        'Sells': Sells.split(','),
+        'Sold_To': Sold_To.split(','),
+        'Stocks': Stocks.split(','),
+        'Vendor': Vendor.split(','),
+        'Visits': Visits.split(',')
+	}
+	nameprevious = ""
+	function submited(val){
+		// console.log(val)
+		
+        if(val == 1) makeForm("Artist")
+        else if(val == 2) makeForm("Auction")
+        else if(val == 3) makeForm("Customer")
+        else if(val == 4) makeForm("Paintings")
+        else if(val == 5) makeForm("Person")
+        else if(val == 6) makeForm("Requests")
+        else if(val == 7) makeForm("Sells")
+        else if(val == 8) makeForm("Sold_To")
+        else if(val == 9) makeForm("Stocks")
+        else if(val == 10) makeForm("Vendor")
+        else if(val == 11) makeForm("Visits")
+	}
+
+	
+	// function reload(){
+	// 	location.reload()
+	// }
+	function validateForm(tableName)
+	{
+		mytable = tableName.value
+		if(mytable == "Artist"){
+			var x = document.forms[mytable]["Artist_ID"].value;
+		    if (x == "" || x.length != 6 || isNaN(x) || x < 0) {
+		        alert("Error in Artist_ID");
+		        return false;
+		    }
+
+		    var y = document.forms[mytable]["Style"].value;
+		    if (y == "" || y.length > 100 ) {
+		        alert("Error in Style");
+		        return false;
+		    }
+
+		    var z = document.forms[mytable]["Birth_Place"].value;
+		    if (z == "" || z.length > 100 ) {
+		        alert("Error in Birth_Place");
+		        return false;
+		    }
+
+		    var a = document.forms[mytable]["Age"].value;
+		    if (a < 0 || a > 16777215 || a == "") {
+		        alert("Error in Age");
+		        return false;
+		    }
+
+		} else if(mytable == "Paintings"){
+
+			var aid = document.forms[mytable]["Artist_ID"].value;
+		    if (aid == "" || aid.length != 6) {
+		        alert("Error in Artist_ID");
+		        return false;
+		    }
+
+			var ae = document.forms[mytable]["Title"].value;
+		    if (ae != "" ){
+		    	if(ae.length > 500){
+			        alert("Error in Title");
+			        return false;
+		    	}
+		    }
+
+			var ag = document.forms[mytable]["Price"].value;
+		    if (ag != "") {
+		    	if(isNaN(ag)||ag < 0 ){    		
+			        alert("Error in Price");
+			        return false;
+		    	}
+		    }
+
+		    var pdate = document.forms[mytable]["Year"].value;
+		    if (pdate!= "") {
+		    	if (pdate.length != 10 || pdate.charAt(4) != '-' || pdate.charAt(7) != '-') 
+		    	{
+			        alert("Error in Year. Should be YYYY-MM-DD");
+			        return false;
+			    }
+		    }
+		    var Categ = document.forms[mytable]["Category"].value;
+		    if (Categ!= "") {
+		    	if (pdate.length > 100) 
+		    	{
+			        alert("Error in Category");
+			        return false;
+			    }
+		    }
+		} else if(mytable == "Sold_To"){
+			var ee = document.forms[mytable]["Customer_ID"].value;
+
+		    if (ee == "" || ee.length != 6 || isNaN(ee) || ee < 0) {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+
+		    var ae2 = document.forms[mytable]["Auction_ID"].value;
+		    if (ae2 != "" ){
+		    if (ae2.length != 6 || isNaN(ae2) || ae2 < 0) {
+				        alert("Error in Auction_ID");
+				        return false;
+		    	}
+
+		    }
+		    var ae3 = document.forms[mytable]["Painting_ID"].value;
+		    if (ae3 != "" ){
+		    if (ae3.length != 6 || isNaN(ae3) || ae3 < 0) {
+				        alert("Error in Painting_ID");
+				        return false;
+		    	}
+
+		    }
+		    var ae4 = document.forms[mytable]["Final_Price"].value;
+		    if (ae4 != "" ){
+		    if (isNaN(ae4) || ae3 < 0) {
+				        alert("Error in Final_Price");
+				        return false;
+		    	}
+
+		    }
+		} else if(mytable == "Customer"){
+			var ee2 = document.forms[mytable]["Customer_ID"].value;
+		    if (ee2 == "" || ee2.length != 6 || isNaN(ee2) || ee2 < 0) 
+		    {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+
+			var ae3 = document.forms[mytable]["Address"].value;
+		    if (ae3 != "" ){
+		    	if(ae3.length < 250){
+			        alert("Error in Address");
+			        return false;
+		    	}
+		    }
+		    var ae4 = document.forms[mytable]["Total_Hours"].value;
+		    if (ae4 != "" ){
+		    	if(isNan(ae4) || ae4 < 0){
+			        alert("Error in Total_Hours");
+			        return false;
+		    	}
+		    }
+
+		    
+		} else if(mytable == "Auction"){
+			// alert(mytable)
+			var aucID = document.forms[mytable]["Auction_ID"].value;
+		    if (aucID == "" || aucID.length != 6 || isNaN(aucID)) {
+		        alert("Error in Auction_ID");
+		        return false;
+		    }
+
+		    var datee = document.forms[mytable]["Date"].value;
+	     	console.log(datee)
+		    if (datee!= "") {
+		    	if (datee.length != 10 || datee.charAt(4) != '-' || datee.charAt(7) != '-') 
+		    	{
+			        alert("Error in Date. Should be YYYY-MM-DD");
+			        return false;
+			    }
+		    }
+		} else if(mytable == "Person"){
+			var a331 = document.forms[mytable]["ID"].value;
+		    if (a331 == "" || a331.length != 6|| isNaN(a331)) {
+		        alert("Error in ID");
+		        return false;
+		    }
+		    var x1 = document.forms[mytable]["Name"].value;
+		    if (x1 != "" ){
+		    	if(x1.length > 250){
+			        alert("Error in Name");
+			        return false;
+		    	}
+		    }
+		} else if(mytable == "Stocks"){
+
+			var v1 = document.forms[mytable]["Auction_ID"].value;
+		    if (v1 == "" || v1.length != 6 || isNaN(v1)) {
+		        alert("Error in Auction_ID");
+		        return false;
+		    }
+		    var pid = document.forms[mytable]["Painting_ID"].value;
+		    if (pid != "" ){
+		    	if (pid.length != 6 || isNaN(pid)) {
+		        alert("Error in Painting_ID");
+		        return false;
+			    }
+		    }
+		    var sprice = document.forms[mytable]["Start_Price"].value;
+		    if (sprice != "" ){
+		    	if(isNaN(sprice) || sprice < 0){
+			        alert("Error in Start_Price");
+			        return false;
+		    	}
+		    }
+		} else if(mytable == "Sells"){
+			var v2 = document.forms[mytable]["Painting_ID"].value;
+		    if (v2 == "" || v2.length != 6 || isNaN(v2) || v2 < 0) {
+		        alert("Error in Painting_ID");
+		        return false;
+		    }
+		    v2 = document.forms[mytable]["Vendor_ID"].value;
+		    if (v2 == "" || v2.length != 6 || isNaN(v2) || v2 < 0) {
+		        alert("Error in Vendor_ID");
+		        return false;
+		    }
+
+		    var dt = document.forms[mytable]["Date"].value;
+		    if (dt!= "") {
+		    	if (dt.length != 10 || dt.charAt(4) != '-' || dt.charAt(7) != '-') 
+		    	{
+			        alert("Error in Date. Should be YYYY-MM-DD");
+			        return false;
+			    }
+		    }
+
+		    var rq1 = document.forms[mytable]["Sell_Price"].value;
+		    if (rq1 != "" ){
+		    	if(rq1 < 0 ){
+			        alert("Error in Sell_Price");
+			        return false;
+		    	}
+		    }
+		} else if(mytable == "Buys"){
+			var vvv2 = document.forms[mytable]["Customer_ID"].value;
+		    if (vvv2 == "" || vvv2.length != 6 || vvv2 < 0 || isNaN(vvv2)) {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+		    var qq11 = document.forms[mytable]["Painting_ID"].value;
+		    
+	    	if(qq11.length != 6 || isNaN(qq11)|| qq11 < 0 || qq11 == ""){
+		        alert("Error in Painting_ID");
+		        return false;
+	    	}
+		    
+		    var qq12 = document.forms[mytable]["Date"].value;
+		    if (qq12 != "" ){
+		    	if (qq12.length != 10 || qq12.charAt(4) != '-' || qq12.charAt(7) != '-'){
+			        alert("Error in Date. Should be YYYY-MM-DD");
+			        return false;
+			    }
+		    	
+
+	    	}
+	    } else if(mytable == "Requests"){
+			var cid = document.forms[mytable]["Customer_ID"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+		    var ptl = document.forms[mytable]["Painting_Title"].value;
+		    if (ptl != "" ){
+		    	if(ptl.length > 500){
+			        alert("Error in Painting_Title");
+			        return false;
+		    	}
+		    }
+		    var dat  = document.forms[mytable]["Date"].value;
+		    if (dat != "" ){
+		    	if (dat.length != 10 || dat.charAt(4) != '-' || dat.charAt(7) != '-') 
+		    	{
+			        alert("Error in Date. Should be YYYY-MM-DD");
+			        return false;
+			    }  	
+		    }
+		} else if(mytable == "Vendor"){
+			var cid = document.forms[mytable]["Vendor_ID"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+		    var ptl = document.forms[mytable]["Location"].value;
+		    if (ptl != "" ){
+		    	if(ptl.length > 250){
+			        alert("Error in Location");
+			        return false;
+		    	}
+		    }  
+		} else if(mytable == "Visits"){
+			var cid = document.forms[mytable]["Customer_ID"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in Customer_ID");
+		        return false;
+		    }
+		    var dat = document.forms[mytable]["Date"].value;
+		   if (dat != "" ){
+		    	if (dat.length != 10 || dat.charAt(4) != '-' || dat.charAt(7) != '-'){
+			        alert("Error in Date. Should be YYYY-MM-DD");
+			        return false;
+			    }		    	
+		    }
+		    var timestamp = document.forms[mytable]["Time_IN"].value;
+		    if (timestamp!= ""){
+		    	if (timestamp.charAt(4) != '-' || timestamp.charAt(7) != '-' || timestamp.charAt(13) != ':' || timestamp.charAt(16) != ':' ) 
+		    	{
+			        alert("Error in Date. Should be YYYY-MM-DD HH:MM:SS");
+			        return false;
+			    }
+		    }
+		    var lol = document.forms[mytable]["Hours"].value;
+		    if (lol!= ""){
+		    	if (isNan(lol) || lol < 0) 
+		    	{
+			        alert("Error in Hours");
+			        return false;
+			    }
+		    }
+		}
+	}
+	
+
+	function makeForm(tableName){
+			// if(nameprevious != "" && nameprevious != tableName){
+				var element = document.getElementById(nameprevious);
+				if(element){
+					// element.innerHTML = '';		
+					if(element.parentNode){
+						    element.parentNode.removeChild(element);
+					}
+				}
+		var attrList = tables[tableName];
+		var f = document.createElement("form");
+		f.id = tableName
+		f.setAttribute('method',"post");
+		f.setAttribute('action',"/insert");
+		f.setAttribute('onsubmit', "return validateForm("+tableName+")")
+
+		for(var attr in attrList){
+			br = document.createElement("br")
+			br2 = document.createElement("br")
+			f.appendChild(br);
+
+			// para = document.createElement("p")
+			var node = document.createTextNode(attrList[attr] + ":\t" );
+			f.appendChild(node);
+			// para.value = attrList[attr]
+			// f.appendChild(para)
+
+			var i = document.createElement("input");
+
+			i.type = "text";
+
+			i.name = attrList[attr];
+			// i.value = attrList[attr];
+			i.id = attr;
+
+			// valtruth = attr
+
+			f.appendChild(i);
+			f.appendChild(br2);
+			// var element = document.getElementById(attrList[attr]);
+			// element.parentNode.removeChild(element);
+
+
+		}
+		nameprevious = tableName
+		var s = document.createElement("input");
+		s.type = "submit";
+		s.value = "Submit";
+		var table = document.createElement("input");
+		table.type = "hidden";
+		table.name = "tableName";
+		table.id = tableName;
+		table.value = tableName;
+		f.appendChild(table);
+		// s.onclick = "reload()";
+		f.appendChild(s);
+		document.getElementsByTagName('body')[0].appendChild(f); 
+	}
+</script>
+
+
+<body>
+
+	<h3>INSERT</h3>
+
+
+	<select onchange="submited(this.selectedIndex)">
+		<option value="default">Please Select Option</option>
+		<option value="Artist" >Artist</option>
+		<option value="Auction" >Auction</option>
+		<option value="Buys" >Buys</option>
+		<option value="Customer" >Customer</option>
+		<option value="Paintings" >Paintings</option>
+		<option value="Person" >Person</option>
+		<option value="Requests" >Requests</option>
+		<option value="Sells" >Sells</option>
+		<option value="Stocks" >Stocks</option>
+		<option value="Vendor" >Vendor</option>
+		<option value="Visits" >Visits</option>
+	</select>
+
+</body>
+</html>

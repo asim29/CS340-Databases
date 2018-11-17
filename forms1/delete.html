@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript">
+    const Artist = "id";
+    const Auction = "id";
+    const Customer = "id";
+    const Paintings = "id";
+    const Person = "id";
+    const Requests = "id";
+    const Sells = "id";
+    const Sold_To = "id";
+    const Stocks = "id";
+    const Vendor = "id";
+    const Visits = "id";
+	
+	let nameprevious = ""
+	
+	const tables = {
+        'Artist': Artist.split(','),
+        'Auction': Auction.split(','),
+        'Customer': Customer.split(','),
+        'Paintings': Paintings.split(','),
+        'Person': Person.split(','),
+        'Requests': Requests.split(','),
+        'Sells': Sells.split(','),
+        'Sold_To': Sold_To.split(','),
+        'Stocks': Stocks.split(','),
+        'Vendor': Vendor.split(','),
+        'Visits': Visits.split(',')
+	}
+	function validateForm(tableName){
+		mytable = tableName.value
+		if(mytable == "Artist"){
+			var x = document.forms[mytable]["id"].value;
+		    if (x == "" || x.length != 6 || isNaN(x) || x < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+
+		    
+		    }
+		else if(mytable == "Paintings"){
+
+			var aid = document.forms[mytable]["id"].value;
+		    if (aid == "" || aid.length != 6) {
+		        alert("Error in id");
+		        return false;
+		    }
+
+			
+		}
+		else if(mytable == "Sold_To"){
+			var ee = document.forms[mytable]["id"].value;
+
+		    if (ee == "" || ee.length != 6 || isNaN(ee) || ee < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+
+		    
+		    
+		}
+		else if(mytable == "Auction"){
+			// alert(mytable)
+			var aucID = document.forms[mytable]["id"].value;
+		    if (aucID == "" || aucID.length != 6 || isNaN(aucID)) {
+		        alert("Error in id");
+		        return false;
+		    }
+
+		   
+		  
+		}
+		else if(mytable == "Stocks"){
+
+			var v1 = document.forms[mytable]["id"].value;
+		    if (v1 == "" || v1.length != 6 || isNaN(v1)) {
+		        alert("Error in id");
+		        return false;
+		    }
+		   
+		}
+		else if(mytable == "Sells"){
+			var v2 = document.forms[mytable]["id"].value;
+		    if (v2 == "" || v2.length != 6 || isNaN(v2) || v2 < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+		   
+		}
+		else if(mytable == "Buys"){
+			var vvv2 = document.forms[mytable]["id"].value;
+		    if (vvv2 == "" || vvv2.length != 6 || vvv2 < 0 || isNaN(vvv2)) {
+		        alert("Error in id");
+		        return false;
+		    }
+		    }
+
+		
+		else if(mytable == "Requests"){
+			var cid = document.forms[mytable]["id"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+		   
+
+		    
+		}
+
+		else if(mytable == "Vendor"){
+			var cid = document.forms[mytable]["id"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+		    
+
+		    
+		}
+		else if(mytable == "Visits"){
+			var cid = document.forms[mytable]["id"].value;
+		    if (cid == "" || cid.length != 6 || isNaN(cid) || cid < 0) {
+		        alert("Error in id");
+		        return false;
+		    }
+		    
+		}
+	}
+	function submited(val){
+        if(val == 1) makeForm("Artist")
+        else if(val == 2) makeForm("Auction")
+        else if(val == 3) makeForm("Customer")
+        else if(val == 4) makeForm("Paintings")
+        else if(val == 5) makeForm("Person")
+        else if(val == 6) makeForm("Requests")
+        else if(val == 7) makeForm("Sells")
+        else if(val == 8) makeForm("Sold_To")
+        else if(val == 9) makeForm("Stocks")
+        else if(val == 10) makeForm("Vendor")
+        else if(val == 11) makeForm("Visits")
+	}
+
+	function makeForm(tableName){
+		var element = document.getElementById(nameprevious);
+		if(element){
+			if(element.parentNode){
+					element.parentNode.removeChild(element);
+			}
+		}
+		var attrList = tables[tableName];
+		var f = document.createElement("form");
+		f.id = tableName
+		f.setAttribute('method',"post");
+		f.setAttribute('action',"/delete");
+		f.setAttribute('onsubmit', "return validateForm("+tableName+")");
+		for(attr in attrList){
+			br = document.createElement("br")
+			br2 = document.createElement("br")
+			f.appendChild(br);
+			var text = document.createTextNode("Entrer PK:\n");
+			f.appendChild(text);
+
+			var node = document.createTextNode(attrList[attr] + ":\t" );
+			f.appendChild(node);
+
+			var i = document.createElement("input");
+			i.type = "text";
+			i.name = attrList[0];
+			i.id = attr;
+
+			f.appendChild(i);
+			f.appendChild(br2);
+		}
+			nameprevious = tableName
+		
+		var s = document.createElement("input");
+		s.type = "submit";
+		s.value = "Submit";
+		
+		var table = document.createElement("input");
+		table.type = "hidden";
+		table.name = "tableName";
+		table.id = tableName;
+		table.value = tableName;
+
+		var attr = document.createElement("input");
+		attr.type = "hidden";
+		attr.name = attr;
+		attr.id = attr;
+		attr.value = attrList[0];
+		
+		f.appendChild(table);
+		f.appendChild(s);
+		f.appendChild(attr);
+		document.getElementsByTagName('body')[0].appendChild(f); 
+	}
+</script>
+<body>
+
+	<h3>DELETE</h3>
+
+	<select onchange="submited(this.selectedIndex)">
+		<option value="default">Please Select Option</option>
+		<option value="Artist" >Artist</option>
+		<option value="Auction" >Auction</option>
+		<option value="Buys" >Buys</option>
+		<option value="Customer" >Customer</option>
+		<option value="Paintings" >Paintings</option>
+		<option value="Person" >Person</option>
+		<option value="Requests" >Requests</option>
+		<option value="Sells" >Sells</option>
+		<option value="Stocks" >Stocks</option>
+		<option value="Vendor" >Vendor</option>
+		<option value="Visits" >Visits</option>
+	</select>
+
+
+</body>
+</html>
