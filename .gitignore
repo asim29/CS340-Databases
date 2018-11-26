@@ -12,3 +12,7 @@ Screenshots/
 
 #Error logs
 *.log
+
+#Files to make Datebase
+ArtGalleryScript.sql
+Art_Gallery.mwb.bak

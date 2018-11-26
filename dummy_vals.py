@@ -135,11 +135,14 @@ def Vendors(persons):
 	mydb.commit()
 
 
+
 # Auctions(100)
 # all_persons = Persons(300)
 
 # Artists(all_persons)
 # Customers(all_persons)
 # Vendors(all_persons)
+
+
 
 # print(mycursor)
