@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- navbar -->  
+<nav class="navbar navbar-expand-lg fixed-top ">  
+  <a class="navbar-brand" href="home.html">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">     
+    <ul class="navbar-nav mr-4">
+      <li class="nav-item">
+        <a class="nav-link" data-value="about" href="#">input</a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link " data-value="portfolio"href="#">Portfolio</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link " data-value="blog" href="#">Blog</a>
+      </li>   
+      <li class="nav-item">  
+        <a class="nav-link " data-value="team" href="#">Team</a>
+      </li>  
+      <li class="nav-item"> 
+        <a class="nav-link " data-value="contact" href="#">Contact</a>
+      </li> 
+    </ul> 
+  </div>
+</nav>
+
+<div class="jumbotron">
+    <h2>Deleting From Database</h2>
+    <p>Select Table from which to Delete</p>
+   <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Table
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" onclick="insert_func(`artist_form`)">Artist</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`auct_form`)">Auction</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`buys_form`)">Buys</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`paint_form`)">Paintings</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`person_form`)">Person</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`req_form`)">Requests</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`soldto_form`)">Sold_To</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`stock_form`)">Stocks</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`vend_form`)">Vendor</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`cust_form`)">Customer</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`sells_form`)">Sells</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`vis_form`)">Visits</a>
+    </div>
+  </div>
+</div>  
+
+<!-- ARTIST FORM -->
+<div class="container" id = "artist_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="art_id">Enter ID to delete</label>
+      <input id="art_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Artist">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- AUCTION FORM -->
+<div class="container" id = "auct_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="auct_id">Enter ID to delete</label>
+      <input id="auct_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Auction">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- BUYS FORM -->
+<div class="container" id="buys_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="buys_id">Enter ID to delete</label>
+      <input id="buys_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Buys">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Paintings Form -->
+<div class="container" id="paint_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="painting_id">Enter ID to delete</label>
+      <input id="painting_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Paintings">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Persons Form -->
+<div class="container" id="person_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="person_id">Enter ID to delete</label>
+      <input id="person_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Person">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form></div>
+
+<!-- Requests Form -->
+<div class="container" id="req_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="req_id">Enter ID to delete</label>
+      <input id="req_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Requests">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Sold_to Form -->
+<div class="container" id="soldto_form" style = "display: none">
+  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="soldto_id">Enter ID to delete</label>
+      <input id="soldto_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Sold_To">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Stock Form -->
+<div class="container" id="stock_form" style = "display: none">
+  <  <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="stocks_id">Enter ID to delete</label>
+      <input id="stocks_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Stocks">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Vendor Form -->
+<div class="container" id="vend_form" style = "display: none">
+    <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="vendor_id">Enter ID to delete</label>
+      <input id="vendor_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Vendor">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Customer Form -->
+<div class="container" id="cust_form" style = "display: none">
+    <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="cust_id">Enter ID to delete</label>
+      <input id="cust_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Sells Form -->
+<div class="container" id="sells_form" style = "display: none">
+    <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="sells_id">Enter ID to delete</label>
+      <input id="sells_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Sells">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Visits Form -->
+<div class="container" id="vis_form" style = "display: none">
+    <form action="/delete" method="post">
+    <div class="form-group">
+      <label for="vis_id">Enter ID to delete</label>
+      <input id="vis_id" type="text" name="id" aria-describedby="idHelp" class="form-control" placeholder="Enter ID">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Visits">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  form_list = ['auct_form','buys_form','paint_form','artist_form','person_form','req_form','soldto_form','stock_form','vend_form','cust_form','sells_form','vis_form']
+  function hide_all(){
+    for (i in form_list){
+      var x = document.getElementById(form_list[i])
+      x.style.display = "none";  
+    }
+  }
+  function insert_func(lol){
+    x = document.getElementById(lol)
+    hide_all()
+    x.style.display = "block";
+  }
+</script>
+</body>
+</html>

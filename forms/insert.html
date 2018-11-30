@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- navbar -->  
+<nav class="navbar navbar-expand-lg fixed-top ">  
+  <a class="navbar-brand" href="home.html">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">     
+    <ul class="navbar-nav mr-4">
+      <li class="nav-item">
+        <a class="nav-link" data-value="about" href="#">input</a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link " data-value="portfolio"href="#">Portfolio</a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link " data-value="blog" href="#">Blog</a>
+      </li>   
+      <li class="nav-item">  
+        <a class="nav-link " data-value="team" href="#">Team</a>
+      </li>  
+      <li class="nav-item"> 
+        <a class="nav-link " data-value="contact" href="#">Contact</a>
+      </li> 
+    </ul> 
+  </div>
+</nav>
+
+<div class="jumbotron">
+    <h2>Inserting into Database</h2>
+    <p>Select Table in which to Insert</p>
+   <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Table
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="#" onclick="insert_func(`artist_form`)">Artist</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`auct_form`)">Auction</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`buys_form`)">Buys</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`paint_form`)">Paintings</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`person_form`)">Person</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`req_form`)">Requests</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`soldto_form`)">Sold_To</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`stock_form`)">Stocks</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`vend_form`)">Vendor</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`cust_form`)">Customer</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`sells_form`)">Sells</a>
+      <a class="dropdown-item" href="#" onclick="insert_func(`vis_form`)">Visits</a>
+    </div>
+  </div>
+</div>  
+
+<!-- ARTIST FORM -->
+<div class="container" id = "artist_form" style = "display: none">
+  <form action="/insert" method="post">
+    <div class="form-group">
+      <label for="art_id">Artist ID</label>
+      <input id="art_id" type="text" name="Artist_ID" aria-describedby="idHelp" class="form-control">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="art_style">Style</label>
+      <input id="art_style" type="text" name="Style" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="art_bplace">Birth Place</label>
+      <input id="art_bplace" type="text" name="Birth_Place" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="art_age">Age</label>
+      <input id="art_age" type="text" name="Age" class="form-control">
+    </div>
+ 
+    <input id="auct_tablename" type="hidden" name="tableName" value="Artist">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- AUCTION FORM -->
+<div class="container" id = "auct_form" style = "display: none">
+  <form action="/insert" method="post">
+    <div class="form-group">
+      <label for="auct_id">Auction ID</label>
+      <input id="auct_id" type="text" name="Auction_ID" aria-describedby="idHelp" class="form-control">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="auct_date">Date</label>
+      <input id="auct_date" type="text" name="Date" aria-describedby="dateHelp" class="form-control">
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Auction">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- BUYS FORM -->
+<div class="container" id="buys_form" style = "display: none">
+<form action="/insert" method="post">
+    <div class="form-group">
+      <label for="buy_custid">Customer ID</label>
+      <input id="buy_custid" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+    <div class="form-group">
+      <label for="buy_paintid">Painting ID</label>
+      <input id="buy_paintid" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control">
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="buys_date">Date</label>
+      <input id="buys_date" type="text" name="Date" aria-describedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Buys">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+  </form>
+</div>
+
+<!-- Paintings Form -->
+<div class="container" id="paint_form" style = "display: none">
+    <div class="form-group">
+      <label for="paint_id">Painting ID</label>
+      <input id="paint_id" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+        <div class="form-group">
+      <label for="paint_artID">Artist ID</label>
+      <input id="paint_artID" type="text" name="Artist_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+    <div class="form-group">
+      <label for="paint_title">Title</label>
+      <input id="paint_title" type="text" name="Title" class="form-control" >
+    </div>
+        <div class="form-group">
+      <label for="paint_price">Price</label>
+      <input id="paint_price" type="text" name="Price" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label for="paint_year">Year</label>
+      <input id="paint_year" type="text" name="Year" aria-describedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Year Format: YYYY-MM-DD</small>
+    </div>
+      <div class="form-group">
+      <label for="paint_category">Category</label>
+      <input id="paint_category" type="text" name="Category" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Paintings">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+
+</div>
+
+<!-- PERSON FORM -->
+<div class="container" id="person_form" style = "display: none">
+    <div class="form-group">
+      <label for="person_id">Enter ID</label>
+      <input id="person_id" type="text" name="ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="person_name">Name</label>
+      <input id="person_name" type="text" name="Name" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Person">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<!-- RREQUESTS FORM -->
+<div class="container" id="req_form" style = "display: none">
+
+    <div class="form-group">
+      <label for="req_custid">Enter Customer ID</label>
+      <input id="req_custid" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="req_title">Painting Title</label>
+      <input id="req_title" type="text" name="Painting_Title" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="req_date">Date</label>
+      <input id="req_date" type="text" name="Date" aria-describedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Requests">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<!-- SOLD_TO FORM -->
+<div class="container" id="soldto_form" style = "display: none">
+    
+    <div class="form-group">
+      <label for="sold_custID">Enter Customer ID</label>
+      <input id="sold_custID" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="sold_auctID">Enter Auction ID</label>
+      <input id="sold_auctID" type="text" name="Auction_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="sold_paintID">Enter Painting ID</label>
+      <input id="sold_paintID" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="sold_finalPrice">Enter Final Price</label>
+      <input id="sold_finalPrice" type="text" name="Final_Price" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Sold_To">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+
+</div>
+
+<!-- STOCKS FORM -->
+<div class="container" id="stock_form" style = "display: none">
+    <div class="form-group">
+      <label for="sold_auctID">Enter Auction ID</label>
+      <input id="sold_auctID" type="text" name="Auction_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="sold_paintID">Enter Painting ID</label>
+      <input id="sold_paintID" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="start_price">Enter Start Price</label>
+      <input id="start_price" type="text" name="Start_Price" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Stocks">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<!-- VENDOR FORM -->
+<div class="container" id="vend_form" style = "display: none">
+    <div class="form-group">
+      <label for="vendor_id">Enter Vendor ID</label>
+      <input id="vendor_id" type="text" name="Vendor_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="vendor_locations">Location</label>
+      <input id="vendor_locations" type="text" name="Location" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Vendor">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+
+</div>
+
+<!-- CUSTOMER FORM -->
+<div class="container" id="cust_form" style = "display: none">
+    <div class="form-group">
+      <label for="customer_id">Enter Customer ID</label>
+      <input id="customer_id" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="customer_name">Address</label>
+      <input id="customer_name" type="text" name="Address" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="cust_Hours">Total Hours</label>
+      <input id="cust_Hours" type="text" name="Total_Hours" class="form-control" >
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<!-- SELLS FORM -->
+<div class="container" id="sells_form" style = "display: none">
+    <div class="form-group">
+      <label for="sells_paintID">Enter Painting ID</label>
+      <input id="sells_paintID" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="sells_vendID">Enter Vendor ID</label>
+      <input id="sells_vendID" type="text" name="Vendor_ID" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="sells_price">Selling Price</label>
+      <input id="sells_price" type="text" name="Sell_Price" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="sells_date">Date</label>
+      <input id="sells_date" type="text" name="Date" aria-describedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<!-- VISITS FORM -->
+<div class="container" id="vis_form" style = "display: none">
+    <div class="form-group">
+      <label for="sells_paintID">Enter Customer ID</label>
+      <input id="sells_paintID" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
+      <small id="idHelp" class="form-text text-muted">Remember, it has to be 6-digits.</small>
+    </div>
+
+    <div class="form-group">
+      <label for="vis_IN">Time In</label>
+      <input id="vis_IN" type="text" name="Time_IN" aria-descibedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD HH:MM:SS</small>
+
+    </div>
+    
+    <div class="form-group">
+      <label for="vis_Hours">Hours</label>
+      <input id="vis_Hours" type="text" name="Hours" class="form-control" >
+    </div>
+
+    <div class="form-group">
+      <label for="vis_date">Date</label>
+      <input id="vis_date" type="text" name="Date" aria-describedby="dateHelp" class="form-control" >
+      <small id="dateHelp" class="form-text text-muted">Date Format: YYYY-MM-DD</small>
+    </div>
+
+    <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
+    
+    <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</div>
+
+<script>
+  form_list = ['auct_form','buys_form','paint_form','artist_form','person_form','req_form','soldto_form','stock_form','vend_form','cust_form','sells_form','vis_form']
+  function hide_all(){
+    for (i in form_list){
+      var x = document.getElementById(form_list[i])
+      x.style.display = "none";  
+    }
+  }
+  function insert_func(lol){
+    x = document.getElementById(lol)
+    hide_all()
+    x.style.display = "block";
+  }
+</script>
+</body>
+</html>
