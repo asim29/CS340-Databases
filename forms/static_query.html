@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>ART</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="main.css">
@@ -34,9 +34,15 @@
 </nav>
 
 <div class="jumbotron text-center">
-
-
+  <form action="/sqlquery" method="post">
+    <div class = "form-group">
+      <h1 for="inputquery">Enter the SQL Query</h1>
+      <input type="text" class="form-control" id="inputquery" name="query">
+      <br>
+      <button type="submit" class="btn btn-secondary btn-lg" value="Submit" onlick="showInput()">Submit</button>
+    </div>
 </div>  
+
 
 </body>
 </html>
