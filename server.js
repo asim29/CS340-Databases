@@ -395,7 +395,7 @@ const DB = new sqlDB;
 	app.post('/update', (async (req, res)=>{
 		tableName = req.body.tableName;
 		id_val = req.body.id
-		id_attr = tableKeyMap[tableName]
+		id_attr = tableKeyMap[tableName][0]
 		data = {}
 		Object.entries(req.body).forEach(	
 			([key, value]) => {
@@ -413,7 +413,7 @@ const DB = new sqlDB;
 			console.log(ans);
 		} catch(err) {
 			console.log(err);
-			res.direct('/');
+			res.redirect('/');
 		}
 		res.redirect('/');
 	}));

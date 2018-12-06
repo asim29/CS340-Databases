@@ -142,6 +142,7 @@
 
 <!-- Paintings Form -->
 <div class="container" id="paint_form" style = "display: none">
+    <form action="/insert" method="post">
     <div class="form-group">
       <label for="paint_id">Painting ID</label>
       <input id="paint_id" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
@@ -173,11 +174,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Paintings">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
-
+</form>
 </div>
 
 <!-- PERSON FORM -->
 <div class="container" id="person_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="person_id">Enter ID</label>
       <input id="person_id" type="text" name="ID" aria-describedby="idHelp" class="form-control" >
@@ -192,10 +195,12 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Person">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <!-- RREQUESTS FORM -->
 <div class="container" id="req_form" style = "display: none">
+<form action="/insert" method="post">
 
     <div class="form-group">
       <label for="req_custid">Enter Customer ID</label>
@@ -217,11 +222,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Requests">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <!-- SOLD_TO FORM -->
 <div class="container" id="soldto_form" style = "display: none">
-    
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="sold_custID">Enter Customer ID</label>
       <input id="sold_custID" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
@@ -248,11 +255,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Sold_To">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
-
+</form>
 </div>
 
 <!-- STOCKS FORM -->
 <div class="container" id="stock_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="sold_auctID">Enter Auction ID</label>
       <input id="sold_auctID" type="text" name="Auction_ID" aria-describedby="idHelp" class="form-control" >
@@ -273,10 +282,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Stocks">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <!-- VENDOR FORM -->
 <div class="container" id="vend_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="vendor_id">Enter Vendor ID</label>
       <input id="vendor_id" type="text" name="Vendor_ID" aria-describedby="idHelp" class="form-control" >
@@ -291,11 +303,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Vendor">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
-
+</form>
 </div>
 
 <!-- CUSTOMER FORM -->
 <div class="container" id="cust_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="customer_id">Enter Customer ID</label>
       <input id="customer_id" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
@@ -315,10 +329,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <!-- SELLS FORM -->
 <div class="container" id="sells_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="sells_paintID">Enter Painting ID</label>
       <input id="sells_paintID" type="text" name="Painting_ID" aria-describedby="idHelp" class="form-control" >
@@ -344,10 +361,13 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <!-- VISITS FORM -->
 <div class="container" id="vis_form" style = "display: none">
+    <form action="/insert" method="post">
+
     <div class="form-group">
       <label for="sells_paintID">Enter Customer ID</label>
       <input id="sells_paintID" type="text" name="Customer_ID" aria-describedby="idHelp" class="form-control" >
@@ -375,6 +395,7 @@
     <input id="auct_tablename" type="hidden" name="tableName" value="Customer">
     
     <button type="submit" class="btn btn-secondary" value="Submit">Submit</button>
+</form>
 </div>
 
 <script>
